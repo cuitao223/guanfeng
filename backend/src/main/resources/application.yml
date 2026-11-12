@@ -1,0 +1,18 @@
+﻿server:
+  address: 127.0.0.1
+  port: ${RADAR_DEMO_PORT:18080}
+spring:
+  application:
+    name: guanfeng-workbench
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+radar:
+  data-dir: ${RADAR_DATA_DIR:data/radar}
+  max-file-size-mb: 64
+logging:
+  level:
+    com.leice.radar: info
+    org.springframework.web: warn
+    org.springframework.boot: warn

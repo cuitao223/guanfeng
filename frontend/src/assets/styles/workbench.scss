@@ -1,0 +1,33 @@
+
+.wb-page { height: 100%; display: flex; flex-direction: column; min-width: 0; color: #e2ebff; font-size: 14px; }
+.wb-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 12px 10px 20px; }
+.wb-heading h1 { font-size: 30px; margin: 6px 0; letter-spacing: 4px; }
+.wb-heading p { margin: 0; color: #a7c4fc; }
+.wb-eyebrow { color: #75aaff; letter-spacing: 3px; font-size: 11px; }
+.wb-inline { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.wb-tabs { flex-shrink: 0; --el-text-color-primary: #e2ebff; --el-color-primary: #75aaff; }
+.wb-tabs .el-tabs__header { margin-bottom: 12px; }
+.wb-tabs .el-tabs__item { font-size: 15px; }
+.wb-content { overflow: auto; flex: 1; min-height: 0; padding: 2px 4px 20px; }
+.wb-section { display: grid; gap: 16px; }
+.wb-card { padding: 20px; border: 1px solid rgba(36,132,249,.28); border-radius: 12px; background: #091329; min-width: 0; }
+.wb-card h2 { font-size: 18px; margin: 0 0 16px; }
+.wb-card h3 { font-size: 15px; margin: 0 0 12px; }
+.wb-muted { color: #a7c4fc; line-height: 1.8; }
+.wb-metrics { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.wb-metric { padding: 18px; border-left: 3px solid #206aff; background: #101d38; border-radius: 8px; }
+.wb-metric strong { display: block; font-size: 26px; margin-top: 10px; }
+.wb-two { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 16px; }
+.wb-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+.wb-chart { height: 460px; min-width: 0; }
+.wb-json { background: #101d38; padding: 16px; border-radius: 8px; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 360px; overflow: auto; font: 12px/1.7 Consolas, monospace; }
+.wb-error { color: #ff9292; white-space: pre-wrap; overflow-wrap: anywhere; }
+.wb-page .el-table { --el-table-bg-color: #091329; --el-table-tr-bg-color: #091329; --el-table-header-bg-color: #101d38; --el-table-text-color: #e2ebff; --el-table-header-text-color: #a7c4fc; }
+.wb-page .el-form-item__label { color: #a7c4fc; }
+.wb-page .el-input, .wb-page .el-select, .wb-page .el-textarea { --el-input-bg-color: #101d38; --el-fill-color-blank: #101d38; --el-text-color-regular: #e2ebff; }
+.wb-page .el-pagination { margin-top: 16px; justify-content: flex-end; }
+.wb-page .el-button + .el-button { margin-left: 0; }
+.wb-page .panel-filter { margin-bottom: 0; }
+.wb-page .el-alert { flex-shrink: 0; }
+.wb-session-form { display: grid; gap: 10px; }
+.wb-link { color: #75aaff; }

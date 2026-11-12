@@ -1,0 +1,20 @@
+---
+description: 平台壳层的视觉约束。只用于 Vue 3 微服务前端的平台页、列表、弹窗和确认框。不用于 Vue 2、风功率预测、单机 Web，也不用于后台 AdminLayout。
+alwaysApply: false
+---
+
+# 平台页样式
+
+只在仓库已被判定为 `vue3-microservice`，且页面走 `PlatformLayout` 时使用。步骤见技能 `vue3-platform-style`。尺寸换算见 `.harness/frontend/rules/px2rem.mdc`。
+
+平台壳默认深色：`PlatformLayout` 在未处于深色时会打开深色主题，顶栏不提供主题切换。新页面沿用这套深色，不要另做浅色主题。
+
+- 画布：浅色备用 `--platform-layout-bg: #f5f7fa`；深色 `#111827`。顶栏高 80px。深色顶栏底为 `rgba(17, 24, 39, 0.8)`，底边 `rgba(36, 132, 249, 0.28)`。总览页顶栏浮在内容上。
+- 强调色 `#206aff`，悬停 `#3d7dff`。未选中导航 `rgba(17, 24, 39, 0.8)`，悬停 `rgba(32, 106, 255, 0.55)`，选中 `#206aff`。不要改用侧栏变量 `#1a1f2e` 或 `#409EFF`。
+- 正文字体沿用 `Alibaba PuHuiTi`、`PingFang SC`、`Microsoft YaHei`。顶栏标题沿用 `Alimama ShuHeiTi`。
+- 列表筛选、表格和工具按钮复用 `src/assets/styles/platform-manage-shell.scss` 的 mixin 与现有类：`panel-filter`、`query-item--w140` 至 `query-item--w220`、`manage-add-btn`。筛选控件高 36px、圆角 8px；表头高 50px、字号 14px；单元格字号 12px。
+- 深色表单与表格：底 `#091329`，表头 `#101d38`，标签与表头字 `#a7c4fc`，输入框底 `rgba(237, 239, 243, 0.06)`、边 `#566c95`、聚焦 `#206aff`，必填星号 `#ff1919`，次按钮 `#46587e`。
+- 表单弹窗使用 `platform-form-dialog`，宽度只用已有修饰类：默认 920、`--md` 720、`--sm` 640、`--chart` 600、`--split` 400。标签宽用已有 CSS 变量。确认框沿用 `platform-message-box.scss`（宽 364、圆角 8、内边距 30）。
+- 尺寸写在 CSS 里。不要用组件的 `width`、`label-width` 或图标 `:size` 写出行内 px。顶栏保持一整行导航，不要按视口改成汉堡菜单。
+
+`/overview`、`DirectoryTabs`、`meta.fullBleed` 和 `/redirect` 不套内容卡片。业务页不要重做顶栏。

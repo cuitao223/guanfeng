@@ -1,0 +1,19 @@
+---
+description: 只用于 Vue 3 微服务前端。不用于 Vue 2、风功率预测或独立单机页面。
+alwaysApply: false
+---
+
+# Vue 3 微服务
+
+只有 `package.json` 表明是 Vue 3、Vite、Element Plus 和 Pinia 时才使用。`windpowerpredict` 是另一个产品。
+
+- 技术栈：Vue 3、Vite、`import.meta.env.VITE_APP_*`、Vue Router 4 的 `addRoute`、Pinia、Element Plus、Axios。没有 Vuex，也没有 Element UI。
+- 页面和接口写在 `frontend/src/`。
+- 新页面使用选项式 API。已有 `<script setup>` 保持原样。细则见 `.harness/frontend/rules/vue-options-api.mdc`。
+- 接口客户端是 `src/utils/request.js`。细则见 `.harness/frontend/rules/vue3-request.mdc`。不要抄其他仓库的超时或 401 跳转。
+- 按钮权限使用 `v-hasPermi`，值是后端权限字符串。路由来自后端菜单。
+- 语言目录是 `src/lang/Cn` 和 `src/lang/En`。本产品的电脑端缩放 `rootValue` 是 80。见 `.harness/frontend/rules/i18n.mdc` 和 `.harness/frontend/rules/px2rem.mdc`。
+- 本产品的地图代码使用 Leaflet。公司范围内也允许高德；只有任务要求时才加入。
+- 平台页使用 `PlatformLayout` 和规则 `vue3-platform-style`。后台页保持 `AdminLayout` 的颜色。
+
+更长的步骤在技能 `vue3-development` 里，不写在本规则中。

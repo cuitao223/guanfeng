@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-11-02",
+  "downloadLimitBytesPerFile": 4194304,
+  "synthetic": false,
+  "datasets": [
+    {
+      "id": "era5-temperature",
+      "name": "ECMWF ERA5 ensemble pressure-level sample",
+      "file": "era5-levels-members.grib",
+      "format": "grib",
+      "kind": "grid",
+      "source": "https://raw.githubusercontent.com/ecmwf/cfgrib/master/era5-levels-members.grib",
+      "sourceDocumentation": "https://github.com/ecmwf/cfgrib",
+      "sha256": "c144fde61ca5d53702bf6f212775ef2cc783bdd66b6865160bf597c1b35ed898",
+      "variables": [
+        "t",
+        "z"
+      ],
+      "defaultVariable": "t",
+      "satellite": false,
+      "license": {
+        "data": "Copernicus ERA5: CC-BY-4.0, attribution required",
+        "spdx": "CC-BY-4.0",
+        "dataLicenseUrl": "https://cds.climate.copernicus.eu/datasets/reanalysis-era5-pressure-levels?tab=overview",
+        "distribution": "ECMWF cfgrib repository: Apache-2.0",
+        "distributionLicenseUrl": "https://github.com/ecmwf/cfgrib/blob/master/LICENSE",
+        "attribution": "Contains Copernicus Climate Change Service information (2017). ERA5 sample distributed by ECMWF/cfgrib. Neither the European Commission nor ECMWF is responsible for its use."
+      },
+      "bytes": 2361600,
+      "verifiedAt": "2026-11-02T12:51:30.906806+00:00",
+      "downloadedAtUTC": "2026-11-02T12:41:11.251732+00:00",
+      "retrieval": {
+        "transport": "HTTPS",
+        "authentication": "anonymous",
+        "maximumBytes": 4194304,
+        "integrity": "pinned SHA-256",
+        "downloadTimestampBasis": "local file modification time from successful original download"
+      },
+      "spatial": {
+        "coordinateSystem": "latitude_longitude",
+        "west": 0.0,
+        "east": 357.0,
+        "south": -90.0,
+        "north": 90.0,
+        "originalShape": [
+          61,
+          120
+        ],
+        "gridResolutionDegrees": 3.0
+      },
+      "availableSelections": {
+        "timesUTC": [
+          "2017-01-01T00:00:00Z",
+          "2017-01-01T12:00:00Z",
+          "2017-01-02T00:00:00Z",
+          "2017-01-02T12:00:00Z"
+        ],
+        "pressureLevelsHpa": [
+          850.0,
+          500.0
+        ],
+        "ensembleMembers": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "defaultSelection": {
+        "timeUTC": "2017-01-01T00:00:00Z",
+        "pressureHpa": 850,
+        "ensembleMember": 0
+      },
+      "description": "Real ERA5 GRIB1 sample on a 3-degree grid, read through cfgrib/ecCodes. The adapter selects the first time, ensemble member 0 and 850 hPa. This is an atmospheric reanalysis, not a surface wind measurement.",
+      "sourceTimeStart": "2017-01-01T00:00:00Z",
+      "sourceTimeEnd": "2017-01-02T12:00:00Z",
+      "timeStart": "2017-01-01 08:00:00",
+      "timeEnd": "2017-01-02 20:00:00",
+      "timeZone": "Asia/Shanghai",
+      "units": {
+        "t": "K",
+        "z": "m**2 s**-2"
+      },
+      "fusionPerformed": false
+    },
+    {
+      "id": "goes16-c13",
+      "name": "NOAA GOES-16 ABI C13 mesoscale brightness temperature",
+      "file": "goes16-c13-m1-20240101T000028.nc",
+      "format": "netcdf",
+      "kind": "grid",
+      "source": "https://noaa-goes16.s3.amazonaws.com/ABI-L2-CMIPM/2024/001/00/OR_ABI-L2-CMIPM1-M6C13_G16_s20240010000281_e20240010000350_c20240010000422.nc",
+      "sourceDocumentation": "https://registry.opendata.aws/noaa-goes/",
+      "sha256": "12f713d3740f70ae1d6474a3d46a8215993f8a44c59b9c20a95b9cad98bc49f7",
+      "variables": [
+        "CMI"
+      ],
+      "defaultVariable": "CMI",
+      "satellite": true,
+      "license": {
+        "data": "NOAA NODD open public data; attribution requested; no implied NOAA endorsement",
+        "dataLicenseUrl": "https://registry.opendata.aws/noaa-goes/",
+        "attribution": "NOAA/NESDIS GOES-16 ABI L2 Cloud and Moisture Imagery, accessed 2026-11-02 via NOAA NODD on AWS.",
+        "embeddedAttribute": "Unclassified data.  Access is restricted to approved users only.",
+        "embeddedAttributeNote": "Original file attribute retained verbatim. Official NODD catalog explicitly publishes these data as open to the public and usable as desired; access to this object is anonymous."
+      },
+      "bytes": 311136,
+      "verifiedAt": "2026-11-02T12:51:31.612018+00:00",
+      "downloadedAtUTC": "2026-11-02T12:41:13.313619+00:00",
+      "retrieval": {
+        "transport": "HTTPS",
+        "authentication": "anonymous",
+        "maximumBytes": 4194304,
+        "integrity": "pinned SHA-256",
+        "downloadTimestampBasis": "local file modification time from successful original download"
+      },
+      "spatial": {
+        "coordinateSystem": "geostationary_fixed_grid",
+        "west": -81.85240173339844,
+        "east": -68.14759826660156,
+        "south": 32.27376937866211,
+        "north": 45.72596740722656,
+        "xUnit": "rad",
+        "yUnit": "rad",
+        "originalShape": [
+          500,
+          500
+        ],
+        "resolution": "2km at nadir"
+      },
+      "description": "Real GOES-16 ABI L2 C13 infrared brightness temperature, not air temperature or a wind retrieval. NetCDF packed values are decoded with scale/offset and fill handling; only DQF==0 is kept. Native scan-angle coordinates are not longitude/latitude.",
+      "sourceTimeStart": "2024-01-01T00:00:28.1Z",
+      "sourceTimeEnd": "2024-01-01T00:00:35.0Z",
+      "timeStart": "2024-01-01 08:00:28",
+      "timeEnd": "2024-01-01 08:00:35",
+      "timeZone": "Asia/Shanghai",
+      "units": {
+        "CMI": "K"
+      },
+      "fusionPerformed": false
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+---
+description: Vue 3 微服务前端的中英文文案约定。语言目录是 Cn 和 En，页面文案走 vue-i18n。
+alwaysApply: false
+---
+
+# 国际化约定
+
+## 语言目录
+
+- 语言目录是 `src/lang/Cn/` 和 `src/lang/En/`，必须和程序使用的语言代码一致，便于 i18n Ally 识别。
+- 界面语言（vue-i18n、Cookie `language`、接口 `msg` 使用的 `X-Lang`）：`src/lang/index.js` 的 `LOCALE_OPTIONS` 提供 `Cn` 和 `En`。
+- 数据语言（`nameCn`、`nameEn` 这类双语业务字段）：`src/constants/dataLocale.js` 的 `DATA_LOCALES`。即使当前取值和界面语言相同，也要和界面语言配置分开。
+- 按业务模块拆分（`common.js`、`login.js`、`platform.js` 等）。文件名是键的第一段，例如 `common.search`、`platform.device.windfarm.name`。
+- 新模块登记到 `src/lang/index.js` 的 `messages.Cn` 和 `messages.En`。不要再为每种语言加一份 `index.js`，那会干扰 i18n Ally。
+- 两边的键结构保持一致，只让文案不同。
+- Cookie 键名是 `language`。
+- i18n Ally 配置在 `.vscode/settings.json`：`localesPaths`、`pathMatcher`、`namespace: true`、`sourceLanguage: Cn`、`languageTagSystem: none`。框架标识是 `vue`，不是 `vue-i18n`。
+
+## 接口语言头
+
+- Axios 请求拦截器必须通过 `getLanguage()` 发送 `X-Lang: Cn|En`，取值是界面语言。
+- 后端用这个头返回对应语言的 `msg`。它本身不决定编辑哪一列 `*Cn` 或 `*En` 业务字段。
+
+## 双语业务字段
+
+- 后端双语字段常用 `*Cn`、`*En` 后缀，例如 `nameCn`、`nameEn`。
+- 读取时优先用当前数据语言：`@/constants/dataLocale` 的 `dataFieldKey(base, locale)`。
+- 风电场表单页签、必填规则和控件由 `DATA_LOCALES` 与 `WIND_FARM_*` 配置驱动，不要写死 `Cn`、`En` 分支。
+- 增加一套界面语言包，不等于增加一种数据语言。数据语言要同时改 `DATA_LOCALES`、后端列和表单配置。
+
+## 页面用法
+
+- 用户可见文案使用 `$t('模块.键')`。新的选项式页面用 `this.$t`。已有 `<script setup>` 页面可以继续用 `useI18n()` 的 `t()`。
+- 新页面的表单 `rules` 提示必须放在 `computed` 里，并用 `this.$t`。
+- 通用操作和提示复用 `common.*`。
+- 语言模块参照 `src/lang/*/login.js`。新页面使用选项式 API，不要照 login.vue 的 `<script setup>`。
+- 切换语言使用 `LangSelect` 和 `appStore.setLanguage`。Element Plus 语言由 `App.vue` 的 `el-config-provider` 提供。
+
+## 编码
+
+- 语言文件里的中文必须是合法 UTF-8。出现乱码就先停下修复。
+- Windows 上优先用 Node 或 Python 以 UTF-8 写入。不要用 PowerShell 重定向写语言文件。
+
+## 不要
+
+- 只增加一种语言的模块
+- 把 `zh-CN`、`en-US`、`zh-cn`、`zh` 当作程序语言代码或目录名
+- 把语言文件放进 `src/lang/zh` 或 `src/lang/en`，i18n Ally 对不上 `Cn` 和 `En`
+- 把 Element Plus 的文案再复制进 `src/lang`
+- 再建第二个 i18n 实例
+- 请求接口时漏掉 `X-Lang`

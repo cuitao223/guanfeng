@@ -1,0 +1,72 @@
+# Credentials and local configuration
+*.key
+*.pem
+*.p12
+*.pfx
+*api key*
+*api_key*
+*apikey*
+.env
+.env.*
+!.env.example
+!frontend/.env.development
+!frontend/.env.production
+!frontend/.env.staging
+config/*
+!config/README.md
+!config/model.example.env
+# Generated files and tools
+**/node_modules/
+**/target/
+**/dist/
+**/.vite/
+.tools/
+.venv/
+runtime/
+scripts/.state/
+evidence/
+delivery/
+**/__pycache__/
+**/.pytest_cache/
+*.pyc
+*.log
+*.tmp
+*.zip
+*.jar
+*.class
+# Private presentation, report, and media assets
+*.ppt
+*.pptx
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.mp4
+*.webm
+*.mov
+*.mp3
+*.wav
+*报告*
+*汇报*
+*统计表*
+**/validation-report.json
+**/verification.json
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Browser execution reports
+tests/browser/*.json
+
+# Slide-derived image is private presentation material
+docs/screenshots/model-access.png
+
+**/test-results.txt
+
+**/*REPORT*.md
+**/*report*.json
+**/*report*.txt
+**/results.json

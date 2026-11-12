@@ -1,0 +1,37 @@
+{
+  "id": "exceed-ratio",
+  "version": "1.0.0",
+  "apiVersion": "1",
+  "name": "Exceedance ratio",
+  "description": "Ratio of valid wind samples above the user threshold",
+  "inputType": "analysis",
+  "outputType": "analysis",
+  "expression": "exceedCount / validCount",
+  "unit": "fraction",
+  "inputUnit": "m/s",
+  "tags": [
+    "wind",
+    "threshold",
+    "ratio",
+    "plugin"
+  ],
+  "parameters": {
+    "type": "object",
+    "properties": {},
+    "additionalProperties": false
+  },
+  "example": {
+    "node": {
+      "id": "ratio",
+      "component": "exceed-ratio",
+      "version": "1.0.0",
+      "params": {}
+    },
+    "inputSummary": {
+      "exceedCount": 1,
+      "validCount": 4
+    },
+    "expectedValue": 0.25
+  },
+  "testReference": "PluginRegistrySafetyTest; tests/integration/verify_core.py:check_plugins"
+}

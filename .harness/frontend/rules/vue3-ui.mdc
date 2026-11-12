@@ -1,0 +1,14 @@
+---
+description: Vue 3 平台的基础界面。优先使用 Element Plus，复用已有平台壳层类名。不要再做第二套按钮、表格、弹窗或分页。
+alwaysApply: false
+---
+
+# Vue 3 基础界面
+
+用于按钮、表单、弹窗、表格、筛选、分页和布局容器。绘图和地图不在这里选型。
+
+- 优先使用 Element Plus：`el-button`、`el-form`、`el-table`、`el-pagination`、`el-dialog`、`ElMessageBox`。
+- 公司专用部分只保留现有壳层：`PlatformLayout`、`panel-filter`、`filter-toolbar`、`query-item--w140` 到 `query-item--w220`、`manage-add-btn`、`manage-toolbar-btn`、`panel-table`、`platform-form-dialog`、`platform-message-box`。
+- Element Plus 加上这些类能完成时，不要再新建按钮、表格、弹窗或分页组件。
+- 尺寸留在 CSS 里。不要设置 `width="920px"` 或 `label-width="140px"`。
+- 步骤在技能 `leice-ui-packages`。颜色在 `vue3-platform-style`。

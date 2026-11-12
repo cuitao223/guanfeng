@@ -1,0 +1,12 @@
+{
+  "name": "NOAA Aviation Weather Center / METAR",
+  "url": "https://aviationweather.gov/data/cache/metars.cache.csv.gz",
+  "downloadedAt": "2026-11-11T17:05:29.260002+00:00",
+  "rawSha256": "1237d1da6e37e9387ec0a88f0fe89c2168f51595713e60c6207621cf90c63da8",
+  "kind": "public-observation-snapshot",
+  "timeStart": "2026-11-11T16:00:00.000Z",
+  "timeEnd": "2026-11-11T16:30:00.000Z",
+  "count": 39,
+  "coordinateSystem": "source WGS84 coordinates; Amap display uses WGS84 to GCJ02 conversion in mainland China",
+  "windConversion": "m/s = kt * 1852 / 3600; variable wind direction is null"
+}

@@ -1,0 +1,41 @@
+{
+  "source": "NOAA/NCEP GFS 0.25 degree",
+  "cycle": "2026-11-11T12:00:00+00:00",
+  "preparedAt": "2026-11-11T18:07:09.197228+00:00",
+  "bounds": {
+    "west": 112,
+    "east": 120,
+    "south": 28,
+    "north": 36
+  },
+  "sourceCoordinates": "WGS84",
+  "grid": "33x33, 0.25 degree, north-to-south rows",
+  "windUnits": "m/s",
+  "pressureUnits": "hPa",
+  "heightUnits": "geopotential metre (gpm), not height above ground",
+  "calculation": "speed=hypot(u,v); meteorological wind-from direction=atan2(-u,-v); render flat layers at per-surface mean geopotential height; vertical exaggeration is visual only; no spatial wind interpolation in source export",
+  "dataKind": "GFS analysis f000 and forecast f003/f006, not radar observations or live measurements",
+  "license": "US NOAA public data; NOAA/NCEP attribution retained",
+  "files": [
+    {
+      "file": "gfs-20261111-12-f000.grib2",
+      "url": "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t12z.pgrb2.0p25.f000&dir=%2Fgfs.20261111%2F12%2Fatmos&subregion=&leftlon=112&rightlon=120&toplat=36&bottomlat=28&var_UGRD=on&var_VGRD=on&var_HGT=on&lev_925_mb=on&lev_850_mb=on&lev_700_mb=on&lev_500_mb=on",
+      "sha256": "04d003076d67c03f1b7604f8b2e9379afb799647d0d3d26abb6c9517ae5c46a3",
+      "bytes": 19578
+    },
+    {
+      "file": "gfs-20261111-12-f003.grib2",
+      "url": "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t12z.pgrb2.0p25.f003&dir=%2Fgfs.20261111%2F12%2Fatmos&subregion=&leftlon=112&rightlon=120&toplat=36&bottomlat=28&var_UGRD=on&var_VGRD=on&var_HGT=on&lev_925_mb=on&lev_850_mb=on&lev_700_mb=on&lev_500_mb=on",
+      "sha256": "af28e88f7e490ba50689f06a4ce7b004f8952f21532a3068a7690528dba0453e",
+      "bytes": 20804
+    },
+    {
+      "file": "gfs-20261111-12-f006.grib2",
+      "url": "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t12z.pgrb2.0p25.f006&dir=%2Fgfs.20261111%2F12%2Fatmos&subregion=&leftlon=112&rightlon=120&toplat=36&bottomlat=28&var_UGRD=on&var_VGRD=on&var_HGT=on&lev_925_mb=on&lev_850_mb=on&lev_700_mb=on&lev_500_mb=on",
+      "sha256": "ae31a0fe3ebf18b3e150efa604c37f8d92058e3079e332e35d71508cf58b9b79",
+      "bytes": 20668
+    }
+  ],
+  "normalizedFile": "frontend/src/data/gfs-wind.json",
+  "normalizedSha256": "f73f3f37f3595a3df04501e3787399c9ef2cc0c10cbf8fc14f5a70c9981bf26f"
+}

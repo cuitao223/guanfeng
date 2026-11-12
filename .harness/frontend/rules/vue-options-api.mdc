@@ -1,0 +1,71 @@
+---
+description: 新页面必须使用 Vue 3 选项式 API。不要使用 script setup 或组合式 API。已有页面保持原来的写法。
+alwaysApply: false
+---
+
+# 新页面使用选项式 API
+
+## 新页面
+
+新建的 `.vue` 页面和页面内新组件必须使用 Vue 3 选项式 API（`<script>` 加 `export default { ... }`）。
+
+新页面不要使用组合式 API 或 `<script setup>`：
+
+- `<script setup>`
+- `setup()`
+- 作为组合式导入的 `ref()`、`reactive()`、`toRefs()`、`computed()`
+- `onMounted`、`onBeforeUnmount`、`watchEffect`
+- `getCurrentInstance()`、`proxy`
+- `defineProps`、`defineEmits`、`defineExpose`、`defineModel`
+- `useI18n()`（改用 `this.$t` 或 `$t`）
+
+改用 `data`、`computed`、`watch`、`methods`、`props`、`emits`、`created`、`mounted`、`beforeUnmount`、`this.$refs`。
+
+新建 `.vue` 文件的注释必须是英文 ASCII。不要用写入工具把中文写进注释（Windows 上可能存成 GBK）。遵循 `.harness/frontend/rules/utf8-generation.mdc`。
+
+仍然是 Vue 3：不要使用 `this.$set`、`this.$delete`、过滤器和 Vuex。
+
+## 已有页面
+
+已有 `<script setup>` 文件可以保持该写法。没有明确要求时不要迁移旧页面。修改旧页面时，沿用该文件当前的写法。
+
+## 新页面骨架
+
+```vue
+<script>
+import { listDemo } from '@/api/demo'
+
+export default {
+  name: 'Demo',
+  data() {
+    return {
+      loading: false,
+      list: [],
+      queryParams: { pageNum: 1, pageSize: 10 }
+    }
+  },
+  computed: {
+    rules() {
+      return {
+        name: [{ required: true, trigger: 'blur', message: this.$t('demo.rules.name') }]
+      }
+    }
+  },
+  created() {
+    this.getList()
+  },
+  methods: {
+    getList() {
+      this.loading = true
+      listDemo(this.queryParams).finally(() => {
+        this.loading = false
+      })
+    }
+  }
+}
+</script>
+```
+
+国际化：模板里用 `$t`，脚本里用 `this.$t`。表单 `rules` 的提示放在 `computed` 中。
+全局方法：`this.$modal`、`this.$tab`、`this.parseTime`、`this.resetForm`、`this.useDict`。
+Pinia：在方法里调用 `useXxxStore()`。不要把页面自己的界面状态放进仓库。

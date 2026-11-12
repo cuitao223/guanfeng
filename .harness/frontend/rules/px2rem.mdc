@@ -1,0 +1,41 @@
+---
+description: 用设计稿像素写在 CSS 里，再由 postcss-pxtorem 转换。不要写行内 px，也不要用视口媒体查询和 rem 重复缩放。
+alwaysApply: false
+---
+
+# px 转 rem
+
+视口缩放靠 html 的 rem（`src/utils/lib-flexible.js`：`clientWidth / 24`，1920 宽时 1rem 等于 80px），再加上 `vite.config.js` 里的 postcss-pxtorem（`rootValue` 为 80；Element Plus 的 CSS 会转换，其他 `node_modules` 保持 px）。
+
+## 尺寸写在 CSS 里
+
+- 设计稿像素写在 style 或 SCSS 中。插件会把它转成 rem。
+- 优先用带作用域的类，例如 `.query-item--w220 { width: 220px }`。
+- 细线：`minPixelValue` 为 2 时，1px 会保持 px。这是预期的。
+
+## 不要
+
+- 用 `style="width: 220px"` 或 `:style="{ width: n + 'px' }"` 写布局尺寸
+- 用 `el-icon` 的 `:size` 或其他会输出行内 px 的属性（改用类，加上 CSS 的 `font-size`）
+- 用 `@media (max-width|max-height)` 再去缩小已经由 rem 覆盖的字号、内边距、宽高
+- 对同一处间距混用 `clamp(px, vw/vh, px)` 和 rem
+
+## 例外
+
+- 运行时颜色：`:style="{ color }"`
+- Leaflet 地图像素：`iconSize`，以及地图 CSS 像素里的弹出层 `left`、`top`
+- `width: 100%`（没有 px）
+- 平台顶栏保持一套布局，由 rem 缩放。不要按视口宽度隐藏导航文字或改成汉堡菜单
+- ECharts、D3 和画布使用 `src/utils/chart/designPx.js` 的 `designPx()`，与 `rootValue` 80 一致
+
+## Element Plus
+
+Element Plus 的主题 CSS 由 pxtorem 转换。Leaflet 和其他 `node_modules` 排除在外。Element Plus 仍写成行内 px 的尺寸（`width=`、`label-width=`、`el-icon` 的 `:size`）优先用 CSS、`:deep()` 或 `--el-*`。能用类表达尺寸时，不要再写 `width="920px"` 或 `label-width="140px"`。见技能 `px2rem`。
+
+## Leaflet 文字
+
+Leaflet 1.9 把 `.leaflet-container` 写成 `font-size: 12px; font-size: 0.75rem`，`.leaflet-popup-content` 写成 `font-size: 1.08333em`。这里的 html rem 是 `clientWidth / 24`（1920 宽时 80px），所以 0.75rem 是 60px。备用的 12px 不会生效。`L.divIcon` 默认是 12×12 的盒子，这个大字号会把一个字形折成一行。
+
+在 `LeiceMap2d` 里保留复位：用更高优先级的设计稿像素设置 `.leaflet-container`、`.leaflet-popup-content` 和 `.leaflet-tooltip`。标记文字使用 `white-space: nowrap`，并放在图标盒子外面。`iconSize` 和 `iconAnchor` 仍是脚本像素。不要再用 `0.75rem` 或继承的正文字号去改这些节点。
+
+生成的 CSS 注释必须是英文 ASCII。

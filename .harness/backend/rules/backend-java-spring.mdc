@@ -1,0 +1,20 @@
+---
+description: Java 17 与 Spring Boot 3 的参考写法。只在工程确实是 Java 加 Spring 时使用。不是指定技术栈。
+alwaysApply: false
+---
+
+# Java 与 Spring 参考写法
+
+这条规则只约束 Java 工程。其他技术栈读 `backend-common`、`backend-response` 和 `backend-api`，不要把这里的包名和注解照搬过去。
+
+- JDK 17，Spring Boot 3.2，Maven。依赖版本交给 `spring-boot-starter-parent`，不要在模块里写死传递依赖的版本。
+- 包按层分：`parse` 读文件，`series` 组装绘图数组，`web` 放控制器、响应和异常，`config` 放配置和消息源，`error` 放业务异常。`parse` 和 `series` 不引用 Spring 注解，方便单测和替换。
+- 响应 DTO 用 `record`，字段名就是 JSON 字段名。不要加与契约不一致的别名。
+- 构造器注入，不用字段注入。控制器只做参数、本地化和响应包装，业务在 service。
+- 配置用 `@ConfigurationProperties`。数据目录和大小上限不写死在代码里，也不写真实路径。
+- 业务异常带业务码和文案键，Web 层统一拦截并本地化。不要在每个控制器里 try/catch。
+- 文案放 `src/main/resources/i18n/messages*.properties`，按 UTF-8 保存。Java 9 起属性文件默认按 UTF-8 读。
+- 单测用 JUnit 5。解析和组装用真实样例文件，控制器用 `MockMvc` 的 standalone 模式，不启动整个应用。
+- 验证命令：`mvn -q test`。打包用 `mvn -q package`，演示 jar 带 `demo` 分类器，普通 jar 供业务工程依赖。
+
+参考实现在 `.harness/backend/code/leice-radar-series-service/`。

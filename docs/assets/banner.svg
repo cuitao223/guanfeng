@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="460" viewBox="0 0 1440 460" role="img" aria-labelledby="title desc">
+  <title id="title">观风 Guanfeng · 从气象数据，到可运行的应用</title>
+  <desc id="desc">观风项目品牌横幅。抽象风线与等值线为装饰图形，非系统截图、气象观测或业务结果。</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#080f21"/><stop offset="1" stop-color="#112c44"/></linearGradient>
+    <linearGradient id="wind" x2="1" y2="0"><stop stop-color="#398bff" stop-opacity="0"/><stop offset=".45" stop-color="#398bff"/><stop offset="1" stop-color="#61e5d5"/></linearGradient>
+    <radialGradient id="halo"><stop stop-color="#169db8" stop-opacity=".22"/><stop offset="1" stop-color="#169db8" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M 36 0 H 0 V 36" fill="none" stroke="#86bcda" stroke-opacity=".05"/></pattern>
+  </defs>
+  <rect width="1440" height="460" rx="24" fill="url(#bg)"/>
+  <rect width="1440" height="460" rx="24" fill="url(#grid)"/>
+  <ellipse cx="1130" cy="190" rx="410" ry="270" fill="url(#halo)"/>
+  <g fill="none" stroke="url(#wind)" stroke-width="1.5">
+    <path d="M730 110 C880 20 940 230 1090 120 S1310 50 1460 100" opacity=".3"/>
+    <path d="M710 145 C890 40 950 260 1110 145 S1330 80 1460 125" opacity=".5"/>
+    <path d="M690 180 C890 60 970 290 1130 170 S1350 110 1460 150" opacity=".8"/>
+    <path d="M680 215 C890 80 990 320 1150 195 S1370 140 1460 175"/>
+    <path d="M690 250 C890 100 1010 350 1170 220 S1390 170 1460 200" opacity=".8"/>
+    <path d="M710 285 C890 120 1030 380 1190 245 S1410 200 1460 225" opacity=".5"/>
+    <path d="M730 320 C890 140 1050 410 1210 270 S1430 230 1460 250" opacity=".3"/>
+  </g>
+  <g fill="none" stroke="#6ae0ce" stroke-opacity=".18">
+    <circle cx="1158" cy="190" r="90"/><circle cx="1158" cy="190" r="126"/><circle cx="1158" cy="190" r="162"/>
+    <path d="M1158 10 V370 M978 190 H1338" stroke-dasharray="4 8"/>
+  </g>
+  <g font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif">
+    <rect x="64" y="54" width="4" height="22" rx="2" fill="#62e1d2"/>
+    <text x="82" y="71" fill="#83c9e7" font-size="14" letter-spacing="4">METEOROLOGY × APPLICATION STUDIO</text>
+    <text x="60" y="158" fill="#f1f7ff" font-size="66" font-weight="700">观风</text>
+    <text x="225" y="156" fill="#b0c9e4" font-size="40" letter-spacing="2">Guanfeng</text>
+    <text x="64" y="221" fill="#eff7ff" font-size="30" font-weight="600">从气象数据，到可运行的应用</text>
+    <text x="64" y="265" fill="#9cb9d3" font-size="18">AI 应用创作 · 可复用组件 · 气象监测与三维风场</text>
+    <g font-size="14" fill="#c4dfed">
+      <rect x="64" y="313" width="155" height="35" rx="17.5" fill="#142d47" stroke="#2c506f"/><text x="141.5" y="336" text-anchor="middle">Java 17 / Spring Boot</text>
+      <rect x="231" y="313" width="88" height="35" rx="17.5" fill="#142d47" stroke="#2c506f"/><text x="275" y="336" text-anchor="middle">Vue 3</text>
+      <rect x="331" y="313" width="146" height="35" rx="17.5" fill="#142d47" stroke="#2c506f"/><text x="404" y="336" text-anchor="middle">Python 科学适配</text>
+      <rect x="489" y="313" width="132" height="35" rx="17.5" fill="#142d47" stroke="#2c506f"/><text x="555" y="336" text-anchor="middle">CPU · 无需训练</text>
+    </g>
+    <path d="M64 383 H1376" stroke="#35506a" stroke-opacity=".65"/>
+    <text x="64" y="418" fill="#8aaac7" font-size="13" letter-spacing="2">Kimi / GLM / Qwen / DeepSeek / GPT / Claude</text>
+    <text x="1376" y="418" fill="#6ce0d1" font-size="13" letter-spacing="2" text-anchor="end">DATA → WORKFLOW → APPLICATION</text>
+  </g>
+</svg>

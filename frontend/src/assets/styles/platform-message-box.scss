@@ -1,0 +1,274 @@
+/**
+ * Platform MessageBox (alert / confirm) from MasterGo 364x138 / 364x160.
+ * Sizes in design-draft px for pxtorem. Do not set ElMessageBox width= px.
+ */
+.el-overlay.is-message-box .el-message-box,
+.el-message-box {
+  --el-messagebox-width: 364px;
+  --el-messagebox-font-size: 14px;
+  --el-messagebox-title-color: #ffffff;
+  --el-messagebox-content-color: #ffffff;
+  --el-messagebox-box-shadow: none;
+  box-sizing: border-box;
+  width: 364px !important;
+  min-height: 138px;
+  max-width: calc(100vw - 32px);
+  padding: 30px;
+  background: #091329;
+  border: 1px solid rgba(36, 132, 249, 0.28);
+  border-radius: 8px;
+  box-shadow: none;
+  font-family: 'Alibaba PuHuiTi', 'Helvetica Neue', Helvetica, 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+}
+
+.el-overlay.is-message-box .el-message-box.platform-msgbox--danger,
+.el-message-box.platform-msgbox--danger {
+  min-height: 160px;
+}
+
+.el-overlay.is-message-box .el-message-box__header,
+.el-message-box__header {
+  display: none;
+}
+
+.el-overlay.is-message-box .el-message-box__content,
+.el-message-box__content {
+  padding: 0;
+}
+
+.el-overlay.is-message-box .el-message-box__container,
+.el-message-box__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+}
+
+.el-overlay.is-message-box .el-message-box__status,
+.el-message-box__status {
+  position: static;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  font-size: 22px;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.el-message-box__status .el-icon,
+.el-message-box__status svg {
+  display: none;
+}
+
+.el-overlay.is-message-box .el-message-box__status.el-message-box-icon--success,
+.el-message-box__status.el-message-box-icon--success {
+  color: #206aff;
+  background-image: url('../icons/msgbox/success.svg');
+}
+
+.el-overlay.is-message-box .el-message-box__status.el-message-box-icon--warning,
+.el-message-box__status.el-message-box-icon--warning,
+.el-overlay.is-message-box .el-message-box__status.el-message-box-icon--info,
+.el-message-box__status.el-message-box-icon--info {
+  color: #ffa13d;
+  background-image: url('../icons/msgbox/warning.svg');
+}
+
+.el-overlay.is-message-box .el-message-box__status.el-message-box-icon--error,
+.el-message-box__status.el-message-box-icon--error {
+  color: #d63434;
+  background-image: url('../icons/msgbox/error.svg');
+}
+
+.el-overlay.is-message-box .el-message-box.platform-msgbox .el-message-box__status {
+  display: none;
+}
+
+.el-overlay.is-message-box .el-message-box__message,
+.el-message-box__message {
+  padding-left: 0;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.el-overlay.is-message-box .el-message-box__message p,
+.el-message-box__message p {
+  margin: 0;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Delete confirm: icon+title on top, hint below (do not use display:contents). */
+.el-overlay.is-message-box .el-message-box.platform-msgbox--danger .el-message-box__container {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.el-overlay.is-message-box .el-message-box.platform-msgbox--danger .el-message-box__status {
+  display: none;
+}
+
+.el-overlay.is-message-box .el-message-box.platform-msgbox--danger .el-message-box__message {
+  width: 100%;
+}
+
+.el-overlay.is-message-box .platform-msgbox__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.el-overlay.is-message-box .platform-msgbox__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  text-align: left;
+}
+
+.el-overlay.is-message-box .platform-msgbox__title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url('../icons/msgbox/warning.svg');
+}
+
+.el-overlay.is-message-box .el-message-box.platform-msgbox--success .platform-msgbox__title::before {
+  background-image: url('../icons/msgbox/success.svg');
+}
+
+.el-overlay.is-message-box .el-message-box.platform-msgbox--warning .platform-msgbox__title::before,
+.el-overlay.is-message-box .el-message-box.platform-msgbox--info .platform-msgbox__title::before {
+  background-image: url('../icons/msgbox/warning.svg');
+}
+
+.el-overlay.is-message-box .el-message-box.platform-msgbox--danger .platform-msgbox__title::before,
+.el-overlay.is-message-box .el-message-box.platform-msgbox--error .platform-msgbox__title::before {
+  background-image: url('../icons/msgbox/error.svg');
+}
+
+.el-overlay.is-message-box .el-message-box__message p.platform-msgbox__desc,
+.el-overlay.is-message-box .platform-msgbox__desc {
+  margin: 0;
+  font-size: 12px;
+  font-weight: normal;
+  color: #a7c4fc;
+  line-height: 1;
+  text-align: center;
+}
+
+.el-overlay.is-message-box .el-message-box__btns,
+.el-message-box__btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0 0;
+}
+
+.el-overlay.is-message-box .el-message-box__btns .el-button,
+.el-message-box__btns .el-button {
+  box-sizing: border-box;
+  min-width: 90px;
+  height: 36px;
+  margin: 0;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid transparent;
+  border-radius: 8px;
+}
+
+.el-overlay.is-message-box .el-message-box__btns .el-button--primary,
+.el-message-box__btns .el-button--primary {
+  --el-button-hover-bg-color: #3b7aff;
+  --el-button-hover-border-color: #3b7aff;
+  --el-button-hover-text-color: #ffffff;
+  background: #206aff;
+  border-color: #206aff;
+  color: #ffffff;
+}
+
+.el-overlay.is-message-box .el-message-box__btns .el-button--primary:hover,
+.el-overlay.is-message-box .el-message-box__btns .el-button--primary:focus,
+.el-message-box__btns .el-button--primary:hover,
+.el-message-box__btns .el-button--primary:focus {
+  background: #3b7aff;
+  border-color: #3b7aff;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.el-overlay.is-message-box .el-message-box__btns .el-button:not(.el-button--primary),
+.el-message-box__btns .el-button:not(.el-button--primary) {
+  --el-button-hover-bg-color: #546892;
+  --el-button-hover-border-color: #546892;
+  --el-button-hover-text-color: #ffffff;
+  background: #46587e;
+  border-color: #46587e;
+  color: #ffffff;
+}
+
+.el-overlay.is-message-box .el-message-box__btns .el-button:not(.el-button--primary):hover,
+.el-overlay.is-message-box .el-message-box__btns .el-button:not(.el-button--primary):focus,
+.el-message-box__btns .el-button:not(.el-button--primary):hover,
+.el-message-box__btns .el-button:not(.el-button--primary):focus {
+  background: #546892;
+  border-color: #546892;
+  color: #ffffff;
+  opacity: 1;
+}
+
+/* Danger confirm: confirm (delete) on the left, cancel gray on the right. */
+.el-overlay.is-message-box .el-message-box.platform-msgbox--danger .el-message-box__btns {
+  flex-direction: row-reverse;
+}
+
+.el-overlay.is-message-box .el-message-box.platform-msgbox--danger .el-message-box__btns .el-button--primary {
+  --el-button-bg-color: transparent;
+  --el-button-border-color: #d63434;
+  --el-button-text-color: #d63434;
+  --el-button-hover-bg-color: #d63434;
+  --el-button-hover-border-color: #d63434;
+  --el-button-hover-text-color: #ffffff;
+  --el-button-active-bg-color: #c02e2e;
+  --el-button-active-border-color: #c02e2e;
+  --el-button-active-text-color: #ffffff;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid #d63434;
+  color: #d63434;
+}
+
+.el-overlay.is-message-box .el-message-box.platform-msgbox--danger .el-message-box__btns .el-button--primary:hover,
+.el-overlay.is-message-box .el-message-box.platform-msgbox--danger .el-message-box__btns .el-button--primary:focus {
+  background-color: #d63434;
+  border-color: #d63434;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.el-overlay.is-message-box .el-message-box.platform-msgbox--danger .el-message-box__btns .el-button:not(.el-button--primary) {
+  background: #46587e;
+  border: 1px solid #46587e;
+  color: #ffffff;
+}

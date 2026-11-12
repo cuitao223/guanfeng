@@ -1,0 +1,22 @@
+---
+description: 雷达数据接口约定。按契约供前端绘图组件取数时使用。字段、时间、缺测和单位都在这里。
+alwaysApply: false
+---
+
+# 接口约定
+
+先读 `.harness/backend/references/series-api-contract.md`，再改接口。字段名以契约为准，不按实现语言命名。
+
+- 路径按业务域分组，参考实现是 `/radar/series/...`。新增接口先看前端 `src/api/` 同目录相邻模块的地址形状。
+- 查询用 GET 和查询参数。分页参数是 `pageNum`、`pageSize`，从 1 开始；结果放 `rows`、`total`。
+- 时间输出 `YYYY-MM-DD HH:mm:ss` 或 Unix 秒。按本地时间理解，不加 `Z`。文件里的 `YYYYMMDD HH:mm:ss` 在服务内转换。
+- 缺测是有限数 `999`，或小于等于 `-999`。空字段、`NaN`、非有限数在服务内改成 `999`。数值 `0` 是有效值。
+- 网格形状固定为 `values[时间或角度下标][高度或距离下标]`，不改为按点返回。
+- 高度和距离从列名读取，例如 `127m WindSpeed`。不要把分辨率写死。
+- 风羽的风速和风向必须同时有效。任一侧缺测时两边都写 `999`，不要只缺一边。
+- 文件参数只接受数据目录内的相对路径。拒绝 `..`、绝对路径和指向目录外的符号链接。
+- 展示单位放 `unit`。信噪比、谱宽和谱强的展示换算在服务内完成；换算口径未确认前返回原始值并保留 `unit`。
+- 未确认口径的统计率先不计算。测量文件直接列出的率可以返回，例如 `DataObtainRate`。上传率、异常率、完备率没有公式，等口径确认。
+- 不返回前端组件用不到的字段。RHI 等未确认的形态不要用 PPI 的字段顶替。
+
+门面和取值规则见 `.harness/data/skills/leice-radar-series/SKILL.md`。组件 id 以 `.harness/frontend/skills/leice-chart-mapping/SKILL.md` 为准。

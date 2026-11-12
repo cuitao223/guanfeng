@@ -1,0 +1,11 @@
+Beijing, China (ZBAA) 39-56N 116-17E 55M
+Nov 11, 2026 - 11:30 AM EST / 2026.11.11 1630 UTC
+Wind: Variable at 2 MPH (2 KT):0
+Visibility: 3 mile(s):0
+Weather: mist
+Temperature: 33 F (1 C)
+Dew Point: 32 F (0 C)
+Relative Humidity: 93%
+Pressure (altimeter): 30.15 in. Hg (1021 hPa)
+ob: ZBAA 111630Z VRB01MPS 5000 BR NSC 01/M00 Q1021 NOSIG
+cycle: 16

@@ -1,0 +1,953 @@
+/**
+ * Dialog colors aligned with the radar form design.
+ * 1) Admin form dialogs: background, text, and input fill.
+ * 2) .platform-form-dialog / .radar-device-dialog: rem-stable form chrome.
+ *
+ * Dialog width and label width MUST live in CSS (pxtorem), never as EP
+ * width= / label-width= props that emit fixed inline px. Custom form
+ * control sizes already scale with rem; dialog/label must scale with them.
+ */
+
+.el-overlay .el-dialog:has(.el-form),
+.el-overlay-dialog .el-dialog:has(.el-form),
+.el-overlay .el-dialog.platform-form-dialog,
+.el-overlay .el-dialog.radar-device-dialog,
+.el-overlay .el-dialog.system-form-dialog,
+.el-overlay-dialog .el-dialog.platform-form-dialog,
+.el-overlay-dialog .el-dialog.radar-device-dialog,
+.el-overlay-dialog .el-dialog.system-form-dialog {
+  --el-dialog-bg-color: #091329;
+  --el-text-color-primary: #ffffff;
+  --el-text-color-regular: #a7c4fc;
+  --el-text-color-secondary: #a7c4fc;
+  --el-text-color-placeholder: #a7c4fc;
+  --el-input-text-color: #a7c4fc;
+  --el-input-placeholder-color: #a7c4fc;
+  --el-input-bg-color: rgba(237, 239, 243, 0.06);
+  --el-fill-color-blank: rgba(237, 239, 243, 0.06);
+  background: #091329;
+  color: #a7c4fc;
+
+  .el-dialog__header,
+  .el-dialog__body,
+  .el-dialog__footer {
+    background: #091329;
+  }
+
+  .el-dialog__body {
+    color: #a7c4fc;
+  }
+
+  .el-dialog__title {
+    color: #ffffff;
+  }
+
+  .el-dialog__headerbtn .el-dialog__close {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .el-form-item__label,
+  .el-radio__label,
+  .el-checkbox__label {
+    color: #a7c4fc;
+  }
+
+  .el-form-item.is-required:not(.is-no-asterisk) > .el-form-item__label::before {
+    color: #ff1919;
+  }
+
+  .el-input__inner,
+  .el-textarea__inner,
+  .el-select__placeholder,
+  .el-select__selected-item {
+    color: #a7c4fc;
+  }
+
+  .el-input__inner::placeholder,
+  .el-textarea__inner::placeholder {
+    color: #a7c4fc;
+  }
+
+  .el-input__wrapper,
+  .el-select__wrapper,
+  .el-textarea__inner,
+  .el-date-editor.el-input__wrapper,
+  .el-input-number .el-input__wrapper {
+    background-color: rgba(237, 239, 243, 0.06);
+  }
+}
+
+.platform-form-dialog.el-dialog,
+.platform-form-dialog .el-dialog,
+.radar-device-dialog.el-dialog,
+.radar-device-dialog .el-dialog {
+  --el-dialog-bg-color: #091329;
+  --platform-label: #a7c4fc;
+  --platform-input-bg: rgba(237, 239, 243, 0.06);
+  --platform-input-border: #566c95;
+  --platform-required: #ff1919;
+  --platform-accent: #206aff;
+  --platform-dialog-width: 920px;
+  --platform-form-label-width: 140px;
+  width: var(--platform-dialog-width) !important;
+  max-width: calc(100vw - 32px);
+  background: #091329;
+  border-radius: 8px;
+}
+
+/* Dialog size variants (design-draft px -> rem via pxtorem) */
+.platform-form-dialog--md.el-dialog,
+.platform-form-dialog--md .el-dialog {
+  --platform-dialog-width: 720px;
+}
+
+.platform-form-dialog--sm.el-dialog,
+.platform-form-dialog--sm .el-dialog {
+  --platform-dialog-width: 640px;
+}
+
+.platform-form-dialog--chart.el-dialog,
+.platform-form-dialog--chart .el-dialog {
+  --platform-dialog-width: 600px;
+  border: 1px solid rgba(36, 132, 249, 0.28);
+}
+
+.platform-form-dialog--split.el-dialog,
+.platform-form-dialog--split .el-dialog {
+  --platform-dialog-width: 400px;
+  border: 1px solid rgba(36, 132, 249, 0.28);
+}
+
+/* Label width variants */
+.platform-form-dialog--label-110 {
+  --platform-form-label-width: 110px;
+}
+
+.radar-device-dialog {
+  --platform-form-label-width: 108px;
+}
+
+.radar-device-dialog.is-label-en {
+  --platform-form-label-width: 140px;
+}
+
+.platform-form-dialog .el-dialog__header,
+.platform-form-dialog.el-dialog .el-dialog__header,
+.radar-device-dialog .el-dialog__header,
+.radar-device-dialog.el-dialog .el-dialog__header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  margin-right: 0;
+  padding: 0 30px;
+  border-bottom: 1px solid rgba(36, 132, 249, 0.28);
+}
+
+.platform-form-dialog .el-dialog__title,
+.platform-form-dialog.el-dialog .el-dialog__title,
+.radar-device-dialog .el-dialog__title,
+.radar-device-dialog.el-dialog .el-dialog__title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.platform-form-dialog .el-dialog__headerbtn,
+.platform-form-dialog.el-dialog .el-dialog__headerbtn,
+.radar-device-dialog .el-dialog__headerbtn,
+.radar-device-dialog.el-dialog .el-dialog__headerbtn {
+  top: 18px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+.platform-form-dialog .el-dialog__headerbtn .el-dialog__close,
+.platform-form-dialog.el-dialog .el-dialog__headerbtn .el-dialog__close,
+.radar-device-dialog .el-dialog__headerbtn .el-dialog__close,
+.radar-device-dialog.el-dialog .el-dialog__headerbtn .el-dialog__close {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.platform-form-dialog .el-dialog__body,
+.platform-form-dialog.el-dialog .el-dialog__body,
+.radar-device-dialog .el-dialog__body,
+.radar-device-dialog.el-dialog .el-dialog__body {
+  overflow-x: hidden;
+  padding: 24px 30px 8px;
+  background: #091329;
+  color: #a7c4fc;
+}
+
+.platform-form-dialog .el-dialog__footer,
+.platform-form-dialog.el-dialog .el-dialog__footer,
+.radar-device-dialog .el-dialog__footer,
+.radar-device-dialog.el-dialog .el-dialog__footer {
+  padding: 8px 30px 24px;
+  background: #091329;
+}
+
+.platform-form-body,
+.radar-form-body {
+  max-height: 68vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.08);
+}
+
+.platform-form-body::-webkit-scrollbar,
+.radar-form-body::-webkit-scrollbar {
+  width: 5px;
+}
+
+.platform-form-body::-webkit-scrollbar-button,
+.radar-form-body::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.platform-form-body::-webkit-scrollbar-track,
+.radar-form-body::-webkit-scrollbar-track {
+  margin: 8px 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.platform-form-body::-webkit-scrollbar-thumb,
+.radar-form-body::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.platform-form-body::-webkit-scrollbar-thumb:hover,
+.radar-form-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.platform-form-body::-webkit-scrollbar-corner,
+.radar-form-body::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.platform-form-dialog .el-form,
+.radar-device-dialog .el-form {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  --el-component-size: 32px;
+  --el-form-label-width: var(--platform-form-label-width);
+}
+
+.platform-form-dialog .el-form .el-row,
+.radar-device-dialog .el-form .el-row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.platform-form-dialog .el-form .el-col,
+.radar-device-dialog .el-form .el-col {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.platform-form-dialog .el-form-item,
+.radar-device-dialog .el-form-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  margin-right: 0;
+  box-sizing: border-box;
+}
+
+/* Rem-scaled label slot: override any leftover EP inline label-width px */
+.platform-form-dialog .el-form-item__label,
+.radar-device-dialog .el-form-item__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 var(--platform-form-label-width) !important;
+  box-sizing: border-box;
+  width: var(--platform-form-label-width) !important;
+  max-width: var(--platform-form-label-width);
+  height: auto;
+  min-height: 32px;
+  margin-left: 0 !important;
+  line-height: 1.4;
+  text-align: right;
+  white-space: normal;
+  word-break: break-word;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--platform-label, #a7c4fc);
+}
+
+.platform-form-dialog .el-form-item__content,
+.radar-device-dialog .el-form-item__content {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  min-width: 0;
+  max-width: 100%;
+  line-height: 32px;
+}
+
+.platform-form-dialog .el-form-item.is-required:not(.is-no-asterisk) > .el-form-item__label::before,
+.radar-device-dialog .el-form-item.is-required:not(.is-no-asterisk) > .el-form-item__label::before {
+  color: var(--platform-required, #ff1919);
+}
+
+.platform-form-dialog .el-input,
+.platform-form-dialog .el-select,
+.platform-form-dialog .el-cascader,
+.platform-form-dialog .el-date-editor,
+.platform-form-dialog .el-input-number,
+.platform-form-dialog .el-textarea,
+.platform-form-dialog .el-time-select,
+.radar-device-dialog .el-input,
+.radar-device-dialog .el-select,
+.radar-device-dialog .el-cascader,
+.radar-device-dialog .el-date-editor,
+.radar-device-dialog .el-input-number,
+.radar-device-dialog .el-textarea,
+.radar-device-dialog .el-time-select {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  --el-input-bg-color: var(--platform-input-bg);
+  --el-input-border-color: var(--platform-input-border);
+  --el-input-hover-border-color: var(--platform-accent);
+  --el-input-focus-border-color: var(--platform-accent);
+  --el-input-text-color: var(--platform-label);
+  --el-input-placeholder-color: var(--platform-label);
+  --el-fill-color-blank: var(--platform-input-bg);
+}
+
+.platform-form-dialog .el-input__wrapper,
+.platform-form-dialog .el-select__wrapper,
+.platform-form-dialog .el-textarea__inner,
+.radar-device-dialog .el-input__wrapper,
+.radar-device-dialog .el-select__wrapper,
+.radar-device-dialog .el-textarea__inner {
+  height: 32px;
+  min-height: 32px;
+  padding-left: 12px;
+  padding-right: 12px;
+  background-color: var(--platform-input-bg);
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px var(--platform-input-border) inset;
+}
+
+.platform-form-dialog .el-textarea__inner,
+.radar-device-dialog .el-textarea__inner {
+  height: auto;
+  min-height: 64px;
+}
+
+/* Bind multi-selects (radar / windfarm / project): grow with tags, no fixed height. */
+.platform-form-dialog .platform-bind-select .el-select__wrapper,
+.platform-form-dialog .windfarm-remote-select .el-select__wrapper,
+.radar-device-dialog .radar-bind-select .el-select__wrapper,
+.radar-device-dialog .windfarm-remote-select .el-select__wrapper {
+  height: auto !important;
+  min-height: 32px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  align-items: center;
+}
+
+.platform-form-dialog .el-form-item:has(.platform-bind-select),
+.platform-form-dialog .el-form-item:has(.windfarm-remote-select),
+.radar-device-dialog .el-form-item:has(.radar-bind-select),
+.radar-device-dialog .el-form-item:has(.windfarm-remote-select),
+.platform-form-dialog .el-form-item.is-bind-item,
+.radar-device-dialog .el-form-item.is-bind-item,
+.platform-form-dialog .el-form-item:has(.el-textarea),
+.radar-device-dialog .el-form-item:has(.el-textarea),
+.platform-form-dialog .el-form-item.is-textarea-item,
+.radar-device-dialog .el-form-item.is-textarea-item {
+  align-items: flex-start;
+}
+
+.platform-form-dialog .el-form-item:has(.platform-bind-select) .el-form-item__label,
+.platform-form-dialog .el-form-item:has(.windfarm-remote-select) .el-form-item__label,
+.radar-device-dialog .el-form-item:has(.radar-bind-select) .el-form-item__label,
+.radar-device-dialog .el-form-item:has(.windfarm-remote-select) .el-form-item__label,
+.platform-form-dialog .el-form-item.is-bind-item .el-form-item__label,
+.radar-device-dialog .el-form-item.is-bind-item .el-form-item__label {
+  padding-top: 8px;
+}
+
+.platform-form-dialog .el-form-item:has(.platform-bind-select) .el-form-item__content,
+.platform-form-dialog .el-form-item:has(.windfarm-remote-select) .el-form-item__content,
+.radar-device-dialog .el-form-item:has(.radar-bind-select) .el-form-item__content,
+.radar-device-dialog .el-form-item:has(.windfarm-remote-select) .el-form-item__content,
+.platform-form-dialog .el-form-item.is-bind-item .el-form-item__content,
+.radar-device-dialog .el-form-item.is-bind-item .el-form-item__content {
+  align-items: flex-start;
+  line-height: normal;
+}
+
+.platform-form-dialog .el-input__wrapper:hover,
+.platform-form-dialog .el-select__wrapper:hover,
+.platform-form-dialog .el-textarea__inner:hover,
+.radar-device-dialog .el-input__wrapper:hover,
+.radar-device-dialog .el-select__wrapper:hover,
+.radar-device-dialog .el-textarea__inner:hover {
+  box-shadow: 0 0 0 1px var(--platform-accent) inset;
+}
+
+.platform-form-dialog .el-input__wrapper.is-focus,
+.platform-form-dialog .el-select__wrapper.is-focused,
+.platform-form-dialog .el-textarea__inner:focus,
+.radar-device-dialog .el-input__wrapper.is-focus,
+.radar-device-dialog .el-select__wrapper.is-focused,
+.radar-device-dialog .el-textarea__inner:focus {
+  box-shadow: 0 0 0 1px var(--platform-accent) inset;
+}
+
+.platform-form-dialog .el-input__inner,
+.platform-form-dialog .el-select__placeholder,
+.platform-form-dialog .el-select__selected-item,
+.platform-form-dialog .el-textarea__inner,
+.radar-device-dialog .el-input__inner,
+.radar-device-dialog .el-select__placeholder,
+.radar-device-dialog .el-select__selected-item,
+.radar-device-dialog .el-textarea__inner {
+  color: var(--platform-label);
+  font-size: 14px;
+}
+
+.platform-form-dialog .el-input__inner::placeholder,
+.platform-form-dialog .el-textarea__inner::placeholder,
+.radar-device-dialog .el-input__inner::placeholder,
+.radar-device-dialog .el-textarea__inner::placeholder {
+  color: var(--platform-label);
+  opacity: 0.85;
+}
+
+.platform-form-dialog .el-input.is-disabled .el-input__wrapper,
+.radar-device-dialog .el-input.is-disabled .el-input__wrapper {
+  background-color: rgba(237, 239, 243, 0.04);
+  box-shadow: 0 0 0 1px var(--platform-input-border) inset;
+}
+
+.platform-form-dialog .el-input-number .el-input__wrapper,
+.radar-device-dialog .el-input-number .el-input__wrapper {
+  padding-right: 42px;
+}
+
+.platform-form-dialog .el-input-number.is-controls-right,
+.radar-device-dialog .el-input-number.is-controls-right {
+  height: 32px;
+  line-height: 32px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.platform-form-dialog .el-input-number__increase,
+.platform-form-dialog .el-input-number__decrease,
+.radar-device-dialog .el-input-number__increase,
+.radar-device-dialog .el-input-number__decrease {
+  width: 32px;
+  background: rgba(237, 239, 243, 0.14);
+  border-left: 1px solid var(--platform-input-border);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Align both spinner halves on the same right edge (EP default right:1px jogs the decrease border). */
+.platform-form-dialog .el-input-number.is-controls-right .el-input-number__increase,
+.platform-form-dialog .el-input-number.is-controls-right .el-input-number__decrease,
+.radar-device-dialog .el-input-number.is-controls-right .el-input-number__increase,
+.radar-device-dialog .el-input-number.is-controls-right .el-input-number__decrease {
+  right: 0;
+  left: auto;
+  width: 32px;
+  height: 50%;
+  line-height: 1;
+  font-size: 13px;
+  margin: 0;
+  box-sizing: border-box;
+  border-left: 1px solid var(--platform-input-border);
+  border-right: none;
+}
+
+.platform-form-dialog .el-input-number.is-controls-right .el-input-number__increase,
+.radar-device-dialog .el-input-number.is-controls-right .el-input-number__increase {
+  top: 0;
+  bottom: auto;
+  border-bottom: 1px solid var(--platform-input-border);
+  border-radius: 0 8px 0 0;
+}
+
+.platform-form-dialog .el-input-number.is-controls-right .el-input-number__decrease,
+.radar-device-dialog .el-input-number.is-controls-right .el-input-number__decrease {
+  top: auto;
+  bottom: 0;
+  border-radius: 0 0 8px 0;
+}
+
+.platform-form-dialog .el-select__caret,
+.platform-form-dialog .el-input__suffix .el-icon,
+.radar-device-dialog .el-select__caret,
+.radar-device-dialog .el-input__suffix .el-icon {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.platform-form-dialog .el-switch,
+.radar-device-dialog .el-switch {
+  --el-switch-on-color: var(--platform-accent);
+  --el-switch-off-color: rgba(237, 239, 243, 0.08);
+  height: var(--el-component-size, 32px);
+  display: inline-flex;
+  align-items: center;
+}
+
+.platform-form-dialog .el-switch__core,
+.radar-device-dialog .el-switch__core {
+  min-width: 34px;
+  height: 16px;
+  border: none;
+  border-radius: 30px;
+}
+
+/* EP checked left is calc(100% - 17px) for a 16px knob. Custom 10px knob
+   must use right inset so the handle stays on the far edge after rem scale. */
+.platform-form-dialog .el-switch .el-switch__action,
+.radar-device-dialog .el-switch .el-switch__action {
+  top: 50%;
+  left: 1px;
+  right: auto;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-50%);
+}
+
+.platform-form-dialog .el-switch.is-checked .el-switch__action,
+.radar-device-dialog .el-switch.is-checked .el-switch__action {
+  left: auto;
+  right: 1px;
+}
+
+.platform-form-dialog .el-form-item__error,
+.radar-device-dialog .el-form-item__error {
+  color: #ff6b6b;
+}
+
+.platform-form-dialog .el-form-item:has(.el-textarea),
+.radar-device-dialog .el-form-item:has(.el-textarea) {
+  align-items: flex-start;
+}
+
+.platform-form-dialog .el-form-item:has(.el-textarea) .el-form-item__label,
+.radar-device-dialog .el-form-item:has(.el-textarea) .el-form-item__label,
+.platform-form-dialog .el-form-item.is-textarea-item .el-form-item__label,
+.radar-device-dialog .el-form-item.is-textarea-item .el-form-item__label {
+  padding-top: 8px;
+}
+
+.platform-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+}
+
+.platform-dialog-btn {
+  width: 120px;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 400;
+  border: none;
+  border-radius: 4px;
+}
+
+.platform-dialog-btn--cancel {
+  background: #46587e;
+  color: #ffffff;
+}
+
+.platform-dialog-btn--cancel:hover,
+.platform-dialog-btn--cancel:focus {
+  background: #546892;
+  color: #ffffff;
+}
+
+.platform-dialog-btn--confirm {
+  background: #206aff;
+  border-color: #206aff;
+  color: #ffffff;
+}
+
+.platform-dialog-btn--confirm:hover,
+.platform-dialog-btn--confirm:focus {
+  background: #3b7aff;
+  border-color: #3b7aff;
+  color: #ffffff;
+}
+
+.platform-bind-select .el-select__selection {
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.platform-bind-select .el-select__wrapper {
+  height: auto !important;
+  min-height: 32px;
+}
+
+.platform-bind-select .el-tag {
+  max-width: 100%;
+  height: 20px;
+  padding: 0 10px;
+  background: rgba(167, 196, 252, 0.16);
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+}
+
+.platform-bind-select .el-tag .el-tag__content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #ffffff;
+}
+
+.platform-bind-select .el-tag .el-tag__close {
+  color: rgba(167, 196, 252, 0.8);
+}
+
+.platform-bind-select-dropdown {
+  box-sizing: border-box;
+  background: #091329;
+  border: 1px solid #566c95;
+
+  .el-select-dropdown__item {
+    height: auto;
+    min-height: 34px;
+    line-height: 1.4;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    white-space: normal;
+    word-break: break-word;
+    color: #a7c4fc;
+  }
+
+  .el-select-dropdown__item.is-hovering,
+  .el-select-dropdown__item:hover {
+    background: rgba(103, 154, 252, 0.12);
+  }
+
+  .el-select-dropdown__item.is-selected {
+    color: #ffffff;
+    background: rgba(32, 106, 255, 0.3);
+  }
+
+  .platform-bind-option,
+  .windfarm-remote-option {
+    display: block;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .el-scrollbar__bar.is-vertical {
+    width: 5px;
+    right: 2px;
+  }
+
+  .el-scrollbar__thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+  }
+
+  .el-scrollbar__thumb:hover {
+    background: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.el-select-dropdown,
+.el-popper.el-select__popper,
+.el-popper.el-tree-select__popper {
+  --el-bg-color-overlay: #091329;
+  --el-border-color-light: #566c95;
+  --el-fill-color-light: rgba(103, 154, 252, 0.12);
+  background: #091329;
+  border: 1px solid #566c95;
+
+  .el-select-dropdown__item {
+    color: #a7c4fc;
+  }
+
+  .el-select-dropdown__item.is-hovering,
+  .el-select-dropdown__item:hover {
+    background: rgba(103, 154, 252, 0.12);
+  }
+
+  .el-select-dropdown__item.is-selected {
+    color: #ffffff;
+    background: rgba(32, 106, 255, 0.3);
+  }
+
+  .el-select-dropdown__empty,
+  .el-select-dropdown__loading {
+    color: #a7c4fc;
+  }
+
+  .el-tree {
+    --el-fill-color-blank: transparent;
+    --el-tree-node-hover-bg-color: rgba(103, 154, 252, 0.12);
+    --el-tree-text-color: #a7c4fc;
+    background: transparent;
+    color: #a7c4fc;
+  }
+
+  .el-popper__arrow::before {
+    background: #091329;
+    border: 1px solid #566c95;
+  }
+}
+
+/* Cascader panel: match platform select dropdown tokens */
+.el-cascader__dropdown,
+.el-popper.el-cascader__dropdown,
+.platform-cascader-dropdown {
+  --el-bg-color-overlay: #091329;
+  --el-border-color-light: #566c95;
+  --el-fill-color-light: rgba(103, 154, 252, 0.12);
+  --el-cascader-menu-text-color: #a7c4fc;
+  --el-cascader-menu-selected-text-color: #ffffff;
+  --el-cascader-menu-fill: #091329;
+  --el-cascader-menu-border: solid 1px #566c95;
+  --el-cascader-menu-shadow: none;
+  --el-cascader-menu-radius: 8px;
+  --el-cascader-node-background-hover: rgba(103, 154, 252, 0.12);
+  --el-cascader-color-empty: #a7c4fc;
+  background: #091329;
+  border: 1px solid #566c95;
+  border-radius: 8px;
+  box-shadow: none;
+
+  .el-cascader-panel {
+    background: #091329;
+  }
+
+  .el-cascader-menu {
+    color: #a7c4fc;
+    background: #091329;
+    border-right: 1px solid #566c95;
+  }
+
+  .el-cascader-menu:last-child {
+    border-right: none;
+  }
+
+  .el-cascader-node {
+    color: #a7c4fc;
+  }
+
+  .el-cascader-node:not(.is-disabled):hover,
+  .el-cascader-node:not(.is-disabled):focus {
+    background: rgba(103, 154, 252, 0.12);
+  }
+
+  .el-cascader-node.in-active-path,
+  .el-cascader-node.is-selectable.in-checked-path,
+  .el-cascader-node.is-active {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .el-cascader-node.is-active {
+    background: rgba(32, 106, 255, 0.3);
+  }
+
+  .el-cascader-node__postfix {
+    color: rgba(167, 196, 252, 0.8);
+  }
+
+  .el-cascader-node > .el-radio {
+    height: 14px;
+  }
+
+  .el-cascader-node .el-radio__inner {
+    width: 14px;
+    height: 14px;
+    background: transparent;
+    border-color: #566c95;
+  }
+
+  .el-cascader-node .el-radio__input.is-checked .el-radio__inner {
+    background: #206aff;
+    border-color: #206aff;
+  }
+
+  .el-cascader-node .el-radio__input.is-checked .el-radio__inner::after {
+    background: #ffffff;
+  }
+
+  .el-cascader-node .el-checkbox__inner {
+    background: transparent;
+    border-color: #566c95;
+  }
+
+  .el-cascader-node .el-checkbox__input.is-checked .el-checkbox__inner,
+  .el-cascader-node .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+    background: #206aff;
+    border-color: #206aff;
+  }
+
+  .el-cascader__suggestion-list {
+    color: #a7c4fc;
+  }
+
+  .el-cascader__suggestion-item {
+    color: #a7c4fc;
+  }
+
+  .el-cascader__suggestion-item:hover,
+  .el-cascader__suggestion-item:focus {
+    background: rgba(103, 154, 252, 0.12);
+  }
+
+  .el-cascader__suggestion-item.is-checked {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .el-cascader__empty-text,
+  .el-cascader-menu__empty-text {
+    color: #a7c4fc;
+  }
+
+  .el-scrollbar__bar.is-vertical {
+    width: 5px;
+    right: 2px;
+  }
+
+  .el-scrollbar__thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+  }
+
+  .el-scrollbar__thumb:hover {
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .el-popper__arrow::before {
+    background: #091329;
+    border: 1px solid #566c95;
+  }
+}
+
+html.dark .tree-sidebar-manage-wrap {
+  .tree-sidebar-content,
+  .tree-sidebar,
+  .tree-sidebar .tree-header,
+  .tree-sidebar .collapse-button-container {
+    background: transparent;
+  }
+
+  .tree-sidebar {
+    border-right-color: rgba(36, 132, 249, 0.28);
+  }
+
+  .tree-sidebar .tree-header {
+    border-bottom-color: rgba(36, 132, 249, 0.28);
+  }
+
+  .el-tree {
+    --el-fill-color-blank: transparent;
+    --el-tree-node-hover-bg-color: rgba(32, 106, 255, 0.12);
+    --el-tree-text-color: #a7c4fc;
+    background: transparent;
+    color: #a7c4fc;
+  }
+
+  .el-tree-node__content:hover {
+    background-color: rgba(32, 106, 255, 0.12) !important;
+  }
+
+  .el-tree-node.is-current > .el-tree-node__content {
+    background-color: rgba(32, 106, 255, 0.24) !important;
+    color: #ffffff;
+  }
+}
+
+.platform-form-dialog .el-checkbox__label,
+.platform-form-dialog .el-switch__label {
+  color: #a7c4fc;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.platform-form-dialog .el-checkbox__inner {
+  background-color: rgba(237, 239, 243, 0.06);
+  border-color: #566c95;
+}
+
+.platform-form-dialog .el-checkbox__input.is-checked .el-checkbox__inner,
+.platform-form-dialog .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+  background-color: #206aff;
+  border-color: #206aff;
+}
+
+.platform-form-dialog--chart .el-tabs--card > .el-tabs__header {
+  margin: 0;
+  border-bottom: 1px solid rgba(36, 132, 249, 0.28);
+}
+
+.platform-form-dialog--chart .el-tabs--card > .el-tabs__header .el-tabs__nav {
+  border: none;
+  border-radius: 0;
+}
+
+.platform-form-dialog--chart .el-tabs--card > .el-tabs__header .el-tabs__item {
+  height: 40px;
+  padding: 0 16px;
+  border: none;
+  color: #a7c4fc;
+  font-size: 14px;
+  font-weight: 400;
+  background: transparent;
+}
+
+.platform-form-dialog--chart .el-tabs--card > .el-tabs__header .el-tabs__item.is-active {
+  color: #ffffff;
+  background: rgba(32, 106, 255, 0.16);
+}
+
+.platform-form-dialog--chart .el-tabs--card > .el-tabs__header .el-tabs__item:hover {
+  color: #ffffff;
+}
+
+.platform-form-dialog--chart .el-tabs__content {
+  color: #a7c4fc;
+}
+
+.platform-color-picker-dropdown.el-popper {
+  background: #091329;
+  border: 1px solid #566c95;
+}
+
+.platform-color-picker-dropdown .el-color-dropdown__main-wrapper,
+.platform-color-picker-dropdown .el-color-dropdown__btns {
+  background: #091329;
+}
+
+.platform-color-picker-dropdown .el-color-dropdown__link-btn,
+.platform-color-picker-dropdown .el-color-dropdown__value {
+  color: #a7c4fc;
+}
+

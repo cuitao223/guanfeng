@@ -1,0 +1,1 @@
+https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t12z.pgrb2.0p25.f000&dir=%2Fgfs.20261111%2F12%2Fatmos&subregion=&leftlon=112&rightlon=120&toplat=36&bottomlat=28&var_UGRD=on&var_VGRD=on&var_HGT=on&lev_925_mb=on&lev_850_mb=on&lev_700_mb=on&lev_500_mb=on

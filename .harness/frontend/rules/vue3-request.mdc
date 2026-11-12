@@ -1,0 +1,15 @@
+---
+description: Vue 3 微服务前端的接口约定。使用 src/utils/request.js。不要再新建第二套 Axios。
+alwaysApply: false
+---
+
+# Vue 3 接口
+
+仓库已判定为 `vue3-microservice` 之后使用。除非任务就是改这些基础设施，否则不要改 `src/utils/request.js`、`src/permission.js` 和 Pinia 用户仓库。
+
+- 从 `@/utils/request` 引入 `request`。函数放在 `src/api/<领域>/<资源>.js`。地址形状跟随同一目录里相邻模块。环境变量名是 `VITE_APP_BASE_API`，不要抄它的值。
+- 拦截器发送 `Authorization: Bearer` 和 `X-Lang`（`Cn` 或 `En`）。业务成功码是 `code` `200`，之后辅助函数解析 `res.data`。不要再包一层 Axios，也不要抄其他仓库的超时或 401 流程。
+- GET 使用 `params`（辅助函数会把它接到地址上）。POST 和 PUT 使用 `data`。DELETE 跟随相邻模块。已经分页的新列表使用 `pageNum` 和 `pageSize`。成功后列表页读取 `res.rows`（接口返回了 `res.total` 时一并读取），与 `src/views/sample/index.vue` 一致。
+- `401` 提示重新登录并前往 `/overview`。`500` 和 `601` 弹出提示，除非 `silent: true`。其他非 200 状态码提示并拒绝。取消的请求保持安静。拦截器已经提示过的错误，页面不要再提示一次。
+- 保存文件使用 `@/utils/request` 的 `download()`。登录或公开接口需要跳过令牌时设置 `headers: { isToken: false }`。重复的 POST 和 PUT 会被拦住，除非 `headers: { repeatSubmit: false }`。
+- 如果 `src/mock` 已经存在，继续通过 `request` 使用它。不要再加一套客户端，也不要在模拟数据或接口文件里写真实主机、令牌或账号。页面不解析测量文件，绘图数组来自接口。见 `.harness/data/skills/leice-radar-series/SKILL.md`。
