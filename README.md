@@ -1,3 +1,5 @@
+<p align="center"><strong>简体中文</strong> &nbsp;|&nbsp; <a href="README.en.md">English</a></p>
+
 <div align="center">
   <img src="docs/assets/banner.svg" width="100%" alt="观风 Guanfeng：从气象数据，到可运行的应用" />
   <h1>观风 · Guanfeng</h1>
